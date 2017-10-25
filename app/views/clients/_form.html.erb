@@ -21,16 +21,6 @@
     <%= form.text_field :phone, id: :client_phone %>
   </div>
 
-  <div class="field">
-    <%= form.label :dog_name %>
-    <%= form.text_field :dog_name, id: :client_dog_name %>
-  </div>
-
-<div class="field">
-  <%= form.label :dog_dob %>
-  <%= form.date_select :dog_dob, :order => [:year, :month, :day], :start_year => 2000, :end_year => Time.now.year, :prompt => {:year => "Select year", :month => "Select month", :day => "Select day"} %>
-</div>
-
   <div class="actions">
     <%= form.submit %>
   </div>
