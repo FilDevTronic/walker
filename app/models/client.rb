@@ -1,6 +1,3 @@
-include ActionView::Helpers::DateHelper
 class Client < ApplicationRecord
-  def age
-    time_ago_in_words(dog_dob)
-  end
+has_many :dogs
 end
