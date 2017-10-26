@@ -1,0 +1,18 @@
+<h1>Walker</h1>
+<hr>
+<h4>Welcome to Walker</h4>
+
+<div>
+  <%= form_for @dog do |f| %>
+    <%= f.text_field :name %>
+    <%= f.submit "Search" %>
+  <% end %>
+</div>
+
+<br>
+
+<% if !user_signed_in? %>
+<p><%= link_to('Login', new_user_session_path) %></p>
+<% else %>
+<p><%= link_to('Employee Dashboard', pages_home_path) %></p>
+<% end %>

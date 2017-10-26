@@ -1,24 +1,44 @@
-<p id="notice"><%= notice %></p>
+<% if user_signed_in? %>
+  <p id="notice"><%= notice %></p>
+<% end %>
+
+<h1>Walker</h1>
+
+<hr>
+
+<h2><%= @dog.name %>'s Profile</h2>
 
 <p>
-  <strong>Name :</strong>
-  <%= @dog.name %>
-</p>
-
-<p>
-  <strong>D.O.B. :</strong>
+  <strong>D.O.B.:</strong>
   <%= @dog.dob %>
 </p>
 
 <p>
-  <strong>Age :</strong>
+  <strong>Age:</strong>
   <%= @dog.age %>
 </p>
 
 <p>
-  <strong>Client :</strong>
+  <% if user_signed_in? %>
+    <strong>Client:</strong>
+  <% else %>
+    <strong>Owner:</strong>
+  <% end %>
   <%= @dog.client.name %>
 </p>
 
-<%= link_to 'Edit', edit_dog_path(@dog) %> |
-<%= link_to 'Back', dogs_path %>
+<div>
+  <strong>Scheduled Walks :</strong>
+  <% @dog.walks.each do |walk| %>
+    <p>Date: <%= walk.datetime.strftime("%A, %y %B %Y") %></p>
+    <p>Distance: <%= walk.distance %> km</p>
+    <br>
+  <% end %>
+</div>
+
+<%if user_signed_in? %>
+  <%= link_to 'Edit', edit_dog_path(@dog) %> |
+  <%= link_to 'Back', dogs_path %>
+<% else %>
+  <%= link_to 'Back', root_path %>
+<% end %>
